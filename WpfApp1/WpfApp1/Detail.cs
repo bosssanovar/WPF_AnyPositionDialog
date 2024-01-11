@@ -28,32 +28,15 @@ namespace WpfApp1
                     ?? (_myCommand = new RelayCommand(
                     () =>
                     {
-                        var content = new PopupEditBox { Text = "WWWWWWWWW" };
-                        var popup = new PopupView(content);
+                        var content = new PopupEditBox("WWWWWWWWW");
+                        content.Applied += Content_Applied;
+                        content.Open();
 
-                        content.OkPressed += Content_OkPressed;
-                        void Content_OkPressed()
+                        void Content_Applied(string obj)
                         {
-                            Close();
+                            MessageBox.Show(obj);
+                            content.Applied -= Content_Applied;
                         }
-
-                        content.CancelPressed += Content_CancelPressed;
-                        void Content_CancelPressed()
-                        {
-                            Close();
-                        }
-
-                        void Close()
-                        {
-                            popup.Close();
-
-                            content.OkPressed -= Content_OkPressed;
-                            content.CancelPressed -= Content_CancelPressed;
-                        }
-
-                        popup.Open();
-
-                        content.SelectAll();
                     }));
             }
         }

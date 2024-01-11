@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfLibrary1;
 
 namespace WpfApp1
 {
@@ -20,27 +22,18 @@ namespace WpfApp1
     /// </summary>
     public partial class PopupEditBox : UserControl
     {
-        public event Action? OkPressed;
-        public event Action? CancelPressed;
+        private PopupView? _PopupView;
 
-        public string Text
-        {
-            get
-            {
-                return textBox.Text;
-            }
-            set
-            {
-                textBox.Text = value;
-            }
-        }
+        public event Action<string>? Applied;
 
-        public PopupEditBox()
+        public PopupEditBox(string initVal)
         {
             InitializeComponent();
+
+            textBox.Text = initVal;
         }
 
-        public void SelectAll()
+        private void SelectAll()
         {
             textBox.Focus();
             textBox.SelectAll();
@@ -48,12 +41,29 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            OkPressed?.Invoke();
+            Close();
+
+            Applied?.Invoke(textBox.Text);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            CancelPressed?.Invoke();
+            Close();
+        }
+
+        public void Open()
+        {
+            _PopupView = new PopupView(this);
+            _PopupView?.Open();
+
+            SelectAll();
+        }
+
+        private void Close()
+        {
+            _PopupView?.Close();
+
+            _PopupView = null;
         }
     }
 }
