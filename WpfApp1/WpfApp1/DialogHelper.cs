@@ -17,18 +17,14 @@ namespace WpfApp1
             // Transform screen point to WPF device independent point
             PresentationSource source = PresentationSource.FromVisual(window);
             Point targetPoints = source.CompositionTarget.TransformFromDevice.Transform(locationFromScreen);
-            // Get Focus
-            Point focus = new Point();
-            focus.X = targetPoints.X;
-            focus.Y = targetPoints.Y;
             // Set coordinates
             Window subWindow = new SubWindow
             {
                 Owner = window,
                 WindowStartupLocation = WindowStartupLocation.Manual,
             };
-            subWindow.Top = focus.Y;
-            subWindow.Left = focus.X;
+            subWindow.Top = targetPoints.Y;
+            subWindow.Left = targetPoints.X;
             subWindow.ShowDialog();
         }
     }
