@@ -23,8 +23,7 @@ namespace WpfApp1
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var target = button1;
-            DialogHelper.ShowDialogOnTarget(this, target);
+            DialogHelper.ShowDialogOnTarget(this, button1, new SubWindow());
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
