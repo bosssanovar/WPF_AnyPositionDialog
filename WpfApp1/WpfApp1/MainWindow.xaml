@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="button1" Content="Button" HorizontalAlignment="Left" Margin="76,60,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="577,60,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button x:Name="button1" Content="ボタン位置に表示" HorizontalAlignment="Left" Margin="34,22,0,0" VerticalAlignment="Top" Click="Button_Click"/>
+        <Button Content="ウィンドウ中央に表示（標準機能）" HorizontalAlignment="Left" Margin="34,47,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
