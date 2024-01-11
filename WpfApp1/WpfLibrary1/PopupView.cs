@@ -17,8 +17,6 @@ namespace WpfLibrary1
 
         private UIElement Content { get; }
 
-        private Border Border { get; }
-
         public PopupView(UIElement content)
         {
             Popup = new Popup
@@ -33,7 +31,7 @@ namespace WpfLibrary1
                 HorizontalOffset = -20,
             };
 
-            Border = new Border
+            var border = new Border
             {
                 Background = Brushes.White,
                 BorderBrush = Brushes.Black,
@@ -43,8 +41,8 @@ namespace WpfLibrary1
 
             Content = content;
 
-            Popup.Child = Border;
-            Border.Child = Content;
+            Popup.Child = border;
+            border.Child = Content;
 
             Popup.MouseDown += (sender, args) => Popup.IsOpen = false;
         }
