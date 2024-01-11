@@ -27,7 +27,7 @@ namespace WpfLibrary1
                 Focusable = true,
                 PopupAnimation = PopupAnimation.None,
                 Placement = PlacementMode.Mouse,
-                VerticalOffset = -30,
+                VerticalOffset = -35,
                 HorizontalOffset = -20,
             };
 

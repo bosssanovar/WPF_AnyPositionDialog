@@ -13,12 +13,32 @@
         <Button Content="ウィンドウ中央に表示（標準機能）" HorizontalAlignment="Left" Margin="34,72,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
         <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False"
                   CanUserResizeRows="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="34,97,310,10"
-                  ItemsSource="{Binding DetailList}">
+                  ItemsSource="{Binding DetailList}" SelectionUnit="Cell">
+            <DataGrid.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding Name}" MouseDown="TextBlock_MouseDown"/>
+                            <Button Content="{Binding Name}" Command="{Binding MyCommand}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Description}" Command="{Binding MyCommand}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding Text}" Command="{Binding MyCommand}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

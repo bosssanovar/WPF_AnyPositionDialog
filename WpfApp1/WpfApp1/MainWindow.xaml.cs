@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,21 +18,21 @@ namespace WpfApp1
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        ObservableCollection<Detail> DetailList = new ObservableCollection<Detail>();
+        public ObservableCollection<Detail> DetailList { get; } = new ObservableCollection<Detail>();
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public MainWindow()
         {
             InitializeComponent();
 
             DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
-            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
-            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
-            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
-            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
-            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
-            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
+            DetailList.Add(new() { Name = "bbbbbbb", Description = "b", Text = "bbb" });
+            DetailList.Add(new() { Name = "ccc", Description = "ccccccccc", Text = "c" });
+            DetailList.Add(new() { Name = "ddd", Description = "dd", Text = "d" });
+            DetailList.Add(new() { Name = "eee", Description = "eeee", Text = "e" });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -51,7 +52,6 @@ namespace WpfApp1
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-
             var content = new PopupEditBox { Text = "WWWWWWWWW" };
             var popup = new PopupView(content);
 
@@ -78,11 +78,6 @@ namespace WpfApp1
             popup.Open();
 
             content.SelectAll();
-        }
-
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }
