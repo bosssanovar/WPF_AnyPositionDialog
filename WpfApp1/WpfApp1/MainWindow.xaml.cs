@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.ObjectModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -18,9 +19,19 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<Detail> DetailList = new ObservableCollection<Detail>();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
+            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
+            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
+            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
+            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
+            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
+            DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,6 +78,11 @@ namespace WpfApp1
             popup.Open();
 
             content.SelectAll();
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
