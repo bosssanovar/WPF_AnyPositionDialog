@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace WpfApp1
 {
-    internal class DialogHelper
+    public class DialogHelper
     {
         public static void ShowDialogOnTarget(Window window, Button target, Window subWindow)
         {
