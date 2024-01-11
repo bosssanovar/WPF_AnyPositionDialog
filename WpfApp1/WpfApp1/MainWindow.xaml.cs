@@ -40,11 +40,33 @@ namespace WpfApp1
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
-            var content = new TextBox { Text = "WWWWWWWWW" };
-            content.SelectAll();
 
+            var content = new PopupEditBox { Text = "WWWWWWWWW" };
             var popup = new PopupView(content);
+
+            content.OkPressed += Content_OkPressed;
+            void Content_OkPressed()
+            {
+                Close();
+            }
+
+            content.CancelPressed += Content_CancelPressed;
+            void Content_CancelPressed()
+            {
+                Close();
+            }
+
+            void Close()
+            {
+                popup.Close();
+
+                content.OkPressed -= Content_OkPressed;
+                content.CancelPressed -= Content_CancelPressed;
+            }
+
             popup.Open();
+
+            content.SelectAll();
         }
     }
 }
