@@ -29,7 +29,7 @@ namespace WpfApp1
             InitializeComponent();
 
             DetailList.Add(new() { Name = "aaaa", Description = "aaaaaaa", Text = "aaaaaaaa" });
-            DetailList.Add(new() { Name = "bbbbbbb", Description = "b", Text = "bbb" });
+            DetailList.Add(new() { Name = "bbbbbbbbbbbbbbbbbbbbb", Description = "b", Text = "bbb" });
             DetailList.Add(new() { Name = "ccc", Description = "ccccccccc", Text = "c" });
             DetailList.Add(new() { Name = "ddd", Description = "dd", Text = "d" });
             DetailList.Add(new() { Name = "eee", Description = "eeee", Text = "e" });
