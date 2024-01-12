@@ -35,14 +35,14 @@
                 <DataGridTemplateColumn Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding Description}" Command="{Binding MyCommand}"/>
+                            <Button Content="{Binding Description}" Command="{Binding MyCommand2}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="100">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding Text}" Command="{Binding MyCommand}"/>
+                            <Button Content="{Binding Text}" Command="{Binding MyCommand3}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
