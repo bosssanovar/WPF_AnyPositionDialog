@@ -13,13 +13,13 @@ namespace WpfLibrary1
 {
     public class PopupView
     {
-        private Popup Popup { get; }
+        private readonly Popup _Popup;
 
-        private UIElement Content { get; }
+        private readonly UIElement _Content;
 
         public PopupView(UIElement content)
         {
-            Popup = new Popup
+            _Popup = new Popup
             {
                 //IsOpen = false,
                 StaysOpen = false,
@@ -39,12 +39,12 @@ namespace WpfLibrary1
                 Padding = new Thickness(5.0d)
             };
 
-            Content = content;
+            _Content = content;
 
-            Popup.Child = border;
-            border.Child = Content;
+            _Popup.Child = border;
+            border.Child = _Content;
 
-            Popup.MouseDown += Popup_MouseDown;
+            _Popup.MouseDown += Popup_MouseDown;
         }
 
         private void Popup_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -54,15 +54,14 @@ namespace WpfLibrary1
 
         public void Open()
         {
-            Popup.IsOpen = true;
-
-            Content.Focus();
+            _Popup.IsOpen = true;
+            _Content.Focus();
         }
 
         public void Close()
         {
-            Popup.MouseDown -= Popup_MouseDown;
-            Popup.IsOpen = false;
+            _Popup.MouseDown -= Popup_MouseDown;
+            _Popup.IsOpen = false;
         }
     }
 }
