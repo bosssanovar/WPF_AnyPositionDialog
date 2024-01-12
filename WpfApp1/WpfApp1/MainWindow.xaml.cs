@@ -37,41 +37,7 @@ namespace WpfApp1
 
         private Point GetSelectedCellPoint()
         {
-            var col = grid.SelectedCells[0].Column.DisplayIndex;
-            var row = grid.Items.IndexOf(grid.SelectedCells[0].Item);
-
-            var cell = GetCell(grid, row, col);
-            return cell.PointToScreen(new Point(0.0d, 0.0d)); ;
-        }
-        private T GetChildOfType<T>(DependencyObject depObj)
-                    where T : DependencyObject
-        {
-            if (depObj == null) return null;
-
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
-            {
-                var child = VisualTreeHelper.GetChild(depObj, i);
-
-                var result = (child as T) ?? GetChildOfType<T>(child);
-                if (result != null) return result;
-            }
-            return null;
-        }
-        private DataGridCell GetCell(DataGrid dataGrid, int row, int column)
-        {
-            DataGridRow rowContainer = (DataGridRow)dataGrid.ItemContainerGenerator.ContainerFromIndex(row);
-            if (rowContainer != null)
-            {
-                DataGridCellsPresenter presenter = GetChildOfType<DataGridCellsPresenter>(rowContainer);
-                DataGridCell cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(column);
-                if (cell == null)
-                {
-                    dataGrid.ScrollIntoView(rowContainer, dataGrid.Columns[column]);
-                    cell = (DataGridCell)presenter.ItemContainerGenerator.ContainerFromIndex(column);
-                }
-                return cell;
-            }
-            return null;
+            return ControlPoint.GetPoint(grid);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
