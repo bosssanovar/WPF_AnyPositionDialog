@@ -44,7 +44,12 @@ namespace WpfLibrary1
             Popup.Child = border;
             border.Child = Content;
 
-            Popup.MouseDown += (sender, args) => Popup.IsOpen = false;
+            Popup.MouseDown += Popup_MouseDown;
+        }
+
+        private void Popup_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Close();
         }
 
         public void Open()
@@ -56,6 +61,7 @@ namespace WpfLibrary1
 
         public void Close()
         {
+            Popup.MouseDown -= Popup_MouseDown;
             Popup.IsOpen = false;
         }
     }
