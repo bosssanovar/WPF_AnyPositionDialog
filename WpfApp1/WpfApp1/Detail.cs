@@ -13,6 +13,7 @@ namespace WpfApp1
 {
     public class Detail : INotifyPropertyChanged
     {
+        private Func<Point> _GetPointFunc;
 
         /// <summary>Description
         /// 通知イベント
@@ -134,7 +135,8 @@ namespace WpfApp1
                     ?? (_myCommand3 = new RelayCommand(
                     () =>
                     {
-                        var content = new PopupEditBox(Text);
+                        var cellPoint = _GetPointFunc();
+                        var content = new PopupEditBox(Text, cellPoint);
                         content.Applied += Content_Applied;
                         content.Open();
 
@@ -145,6 +147,11 @@ namespace WpfApp1
                         }
                     }));
             }
+        }
+
+        public Detail(Func<Point> getPointFunc)
+        {
+            _GetPointFunc = getPointFunc;
         }
     }
 

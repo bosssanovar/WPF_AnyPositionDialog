@@ -23,6 +23,7 @@ namespace WpfApp1
     public partial class PopupEditBox : UserControl
     {
         private PopupView? _PopupView;
+        private Point? _TargetPoint;
 
         public event Action<string>? Applied;
 
@@ -31,6 +32,14 @@ namespace WpfApp1
             InitializeComponent();
 
             textBox.Text = initVal;
+        }
+
+        public PopupEditBox(string initVal, Point point)
+        {
+            InitializeComponent();
+
+            textBox.Text = initVal;
+            _TargetPoint = point;
         }
 
         private void SelectAll()
@@ -53,7 +62,14 @@ namespace WpfApp1
 
         public void Open()
         {
-            _PopupView = new PopupView(this);
+            if (_TargetPoint is null)
+            {
+                _PopupView = new PopupView(this);
+            }
+            else
+            {
+                _PopupView = new PopupView(this, _TargetPoint.Value);
+            }
             _PopupView?.Open();
 
             SelectAll();

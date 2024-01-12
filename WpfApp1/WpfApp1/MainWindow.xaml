@@ -11,7 +11,8 @@
         <Button x:Name="button1" Content="ボタン位置に表示(対象コントロール位置に表示（ウィンドウ）)" HorizontalAlignment="Left" Margin="34,22,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Button x:Name="button2" Content="ボタン位置に表示（マウス位置に表示（Popup））" HorizontalAlignment="Left" Margin="34,47,0,0" VerticalAlignment="Top" Click="button2_Click"/>
         <Button Content="ウィンドウ中央に表示（標準機能）" HorizontalAlignment="Left" Margin="34,72,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <DataGrid CanUserAddRows="False" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False"
+        <DataGrid x:Name="grid"
+                  CanUserAddRows="False" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserReorderColumns="False"
                   CanUserResizeRows="False" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="34,97,310,10"
                   ItemsSource="{Binding DetailList}" SelectionUnit="Cell">
             <DataGrid.Resources>
@@ -23,6 +24,7 @@
             </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.Header>マウス位置に</DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Command="{Binding MyCommand}" ToolTip="{Binding Name}">
@@ -33,6 +35,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.Header>マウス位置に</DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="{Binding Description}" Command="{Binding MyCommand2}"/>
@@ -40,6 +43,7 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="100">
+                    <DataGridTemplateColumn.Header>セル位置に</DataGridTemplateColumn.Header>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button Content="{Binding Text}" Command="{Binding MyCommand3}"/>
